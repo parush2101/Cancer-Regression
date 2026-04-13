@@ -5,18 +5,25 @@
   },
   "final_shape": {
     "rows": 3047,
-    "cols": 24
+    "cols": 76
   },
   "dropped_columns": {
-    "avgdeathsperyear": "leakage \u2014 raw death count directly computes target rate",
-    "avganncount": "raw diagnosis count; incidencerate (per-100k rate) is better",
     "binnedinc": "categorical bin of medincome \u2014 redundant",
-    "pctmarriedhouseholds": "r>0.97 correlation with percentmarried \u2014 duplicate",
+    "pctmarriedhouseholds": "near-duplicate of percentmarried (r>0.97)",
     "pctempprivcoverage": "subset of pctprivatecoverage \u2014 redundant",
     "pctsomecol18_24": "75% missing \u2014 not salvageable",
     "pctprivatecoveragealone": "20% missing and redundant with pctprivatecoverage",
-    "medianage": "max=624 \u2014 data entry error; use medianagemale/female instead",
-    "geography": "county/state string identifier \u2014 no ordinal meaning"
+    "medianage": "max=624 \u2014 data entry error; use medianagemale/female instead"
+  },
+  "geography_handling": {
+    "action": "extracted state as fixed effects (one-hot, reference dropped)",
+    "n_states": 51,
+    "reference_state": "Alabama",
+    "n_dummies_added": 50
+  },
+  "retained_with_correction": {
+    "avgdeathsperyear": "lagged predictor (2009-2013 avg vs ~2015 target) \u2014 valid",
+    "avganncount": "lagged predictor (2009-2013 avg vs ~2015 target) \u2014 valid"
   },
   "imputed": {
     "pctemployed16_over": {
@@ -27,7 +34,9 @@
   },
   "log1p_transformed": [
     "popest2015",
-    "studypercap"
+    "studypercap",
+    "avganncount",
+    "avgdeathsperyear"
   ],
   "outliers_retained": {
     "target_deathrate": {
@@ -36,7 +45,9 @@
       "action": "retained"
     }
   },
-  "kept_columns": [
+  "kept_numeric_columns": [
+    "avganncount",
+    "avgdeathsperyear",
     "target_deathrate",
     "incidencerate",
     "medincome",
@@ -61,5 +72,57 @@
     "pctasian",
     "pctotherrace",
     "birthrate"
+  ],
+  "state_fe_columns": [
+    "state_Alaska",
+    "state_Arizona",
+    "state_Arkansas",
+    "state_California",
+    "state_Colorado",
+    "state_Connecticut",
+    "state_Delaware",
+    "state_District_of_Columbia",
+    "state_Florida",
+    "state_Georgia",
+    "state_Hawaii",
+    "state_Idaho",
+    "state_Illinois",
+    "state_Indiana",
+    "state_Iowa",
+    "state_Kansas",
+    "state_Kentucky",
+    "state_Louisiana",
+    "state_Maine",
+    "state_Maryland",
+    "state_Massachusetts",
+    "state_Michigan",
+    "state_Minnesota",
+    "state_Mississippi",
+    "state_Missouri",
+    "state_Montana",
+    "state_Nebraska",
+    "state_Nevada",
+    "state_New_Hampshire",
+    "state_New_Jersey",
+    "state_New_Mexico",
+    "state_New_York",
+    "state_North_Carolina",
+    "state_North_Dakota",
+    "state_Ohio",
+    "state_Oklahoma",
+    "state_Oregon",
+    "state_Pennsylvania",
+    "state_Rhode_Island",
+    "state_South_Carolina",
+    "state_South_Dakota",
+    "state_Tennessee",
+    "state_Texas",
+    "state_Utah",
+    "state_Vermont",
+    "state_Virginia",
+    "state_Washington",
+    "state_West_Virginia",
+    "state_Wisconsin",
+    "state_Wyoming"
   ]
 }
