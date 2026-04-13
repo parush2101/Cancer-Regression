@@ -1,0 +1,65 @@
+{
+  "original_shape": {
+    "rows": 3047,
+    "cols": 33
+  },
+  "final_shape": {
+    "rows": 3047,
+    "cols": 24
+  },
+  "dropped_columns": {
+    "avgdeathsperyear": "leakage \u2014 raw death count directly computes target rate",
+    "avganncount": "raw diagnosis count; incidencerate (per-100k rate) is better",
+    "binnedinc": "categorical bin of medincome \u2014 redundant",
+    "pctmarriedhouseholds": "r>0.97 correlation with percentmarried \u2014 duplicate",
+    "pctempprivcoverage": "subset of pctprivatecoverage \u2014 redundant",
+    "pctsomecol18_24": "75% missing \u2014 not salvageable",
+    "pctprivatecoveragealone": "20% missing and redundant with pctprivatecoverage",
+    "medianage": "max=624 \u2014 data entry error; use medianagemale/female instead",
+    "geography": "county/state string identifier \u2014 no ordinal meaning"
+  },
+  "imputed": {
+    "pctemployed16_over": {
+      "method": "median",
+      "value": 54.5,
+      "n_filled": 152
+    }
+  },
+  "log1p_transformed": [
+    "popest2015",
+    "studypercap"
+  ],
+  "outliers_retained": {
+    "target_deathrate": {
+      "rule": "3xIQR",
+      "n_flagged": 1,
+      "action": "retained"
+    }
+  },
+  "kept_columns": [
+    "target_deathrate",
+    "incidencerate",
+    "medincome",
+    "popest2015",
+    "povertypercent",
+    "studypercap",
+    "medianagemale",
+    "medianagefemale",
+    "percentmarried",
+    "pctnohs18_24",
+    "pcths18_24",
+    "pctbachdeg18_24",
+    "pcths25_over",
+    "pctbachdeg25_over",
+    "pctemployed16_over",
+    "pctunemployed16_over",
+    "pctprivatecoverage",
+    "pctpubliccoverage",
+    "pctpubliccoveragealone",
+    "pctwhite",
+    "pctblack",
+    "pctasian",
+    "pctotherrace",
+    "birthrate"
+  ]
+}
