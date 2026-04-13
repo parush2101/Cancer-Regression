@@ -1,0 +1,35 @@
+{
+  "OLS": {
+    "cv_rmse": 12.5654,
+    "cv_mae": 9.0827,
+    "cv_r2": 0.7937,
+    "train_rmse": 12.0084,
+    "train_r2": 0.8126,
+    "full_r2": 0.811,
+    "full_rmse": 12.0641,
+    "best_alpha": null,
+    "n_nonzero_coefs": 75
+  },
+  "Ridge": {
+    "cv_rmse": 12.5633,
+    "cv_mae": 9.0957,
+    "cv_r2": 0.7938,
+    "train_rmse": 12.0126,
+    "train_r2": 0.8125,
+    "full_r2": 0.8108,
+    "full_rmse": 12.0682,
+    "best_alpha": 0.319927,
+    "n_nonzero_coefs": 75
+  },
+  "Lasso": {
+    "cv_rmse": 12.6425,
+    "cv_mae": 9.1969,
+    "cv_r2": 0.7913,
+    "train_rmse": 12.1211,
+    "train_r2": 0.8091,
+    "full_r2": 0.808,
+    "full_rmse": 12.1569,
+    "best_alpha": 0.04977,
+    "n_nonzero_coefs": 72
+  }
+}
